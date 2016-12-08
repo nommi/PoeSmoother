@@ -1,0 +1,286 @@
+﻿<Window
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:Properties="clr-namespace:PoeSmoother.Properties"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="PoeSmoother" mc:Ignorable="d"
+		x:Class="PoeSmoother.MainWindow"
+
+		Title="PoeSmoother" Loaded="PoeSmoother_Loaded" AllowDrop="True" Drop="PoeSmoother_Drop" PreviewDrop="PoeSmoother_PreviewDrop" Closing="PoeSmoother_Closing" MinWidth="1100" MinHeight="421" BorderThickness="0" MouseDoubleClick="PoeSmoother_MouseDoubleClick" MouseLeftButtonDown="PoeSmoother_MouseLeftButtonDown" FontFamily="Verdana" FontSize="14" Width="1100" Height="535" WindowStartupLocation="CenterScreen" Icon="PoeSmoother.ico" AllowsTransparency="True" WindowStyle="None" Foreground="{x:Null}" ResizeMode="CanResizeWithGrip">
+
+    <Window.Resources>
+
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true" />
+            <Setter Property="OverridesDefaultStyle" Value="true" />
+            <Setter Property="FontFamily" Value="{DynamicResource Consolas}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource CheckBoxFocusVisual}" />
+            <Setter Property="Foreground" Value="#FFD9D2C7" />
+            <Setter Property="Background" Value="#3f3f3f" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <BulletDecorator Background="Transparent">
+                            <BulletDecorator.Bullet>
+                                <Border x:Name="Border"
+                              Width="13"
+                              Height="13"
+                              CornerRadius="0"
+                              Background="{x:Null}"
+                              BorderBrush="#FF4D4D4D"
+                              BorderThickness="1">
+                                    <Path
+                                                    Width="7" Height="7"
+                                                    x:Name="CheckMark"
+                                                    SnapsToDevicePixels="False"
+                                                    Stroke="#FFD9D2C7"
+                                                    StrokeThickness="2"
+                                                    Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+                                </Border>
+                            </BulletDecorator.Bullet>
+                            <ContentPresenter Margin="8,0,0,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            RecognizesAccessKey="True" />
+                        </BulletDecorator>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="false">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter TargetName="CheckMark" Property="Data" Value="M 0 7 L 7 0" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#454545" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource ApplicationAccentBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#FF595959" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Foreground" Value="#d5d5d5" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Verdana" />
+        </Style>
+
+        <SolidColorBrush x:Key="ActiveBackground" Color="Transparent" />
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border
+                                x:Name="Border"
+                                Margin="0,0,0,0"
+                                Background="{StaticResource ActiveBackground}"
+                                BorderBrush="#CC888888"
+                                BorderThickness="0,0,0,1"
+                                CornerRadius="0,0,0,0">
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="0,0,0,0"
+                                    RecognizesAccessKey="True" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Panel.ZIndex" Value="100" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource ActiveBackground}" />
+                                <Setter TargetName="Border" Property="BorderThickness" Value="0,0,0,0" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ResizeGrip}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Foreground" Value="#d9d2c7" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ResizeGrip}">
+                        <Border Background="{TemplateBinding Background}"
+                    SnapsToDevicePixels="True"
+                    Width="15"
+                    Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0" Padding="1,3,0,0">
+                            <Path Data="M7.677,7.5300003 L9.677,7.5300003 9.677,9.5300002 7.677,9.5300002 z M3.786,7.5300003 L5.7859998,7.5300003 5.7859998,9.5300002 3.786,9.5300002 z M0,7.5300003 L2,7.5300003 2,9.5300002 0,9.5300002 z M3.786,3.8280003 L5.7859998,3.8280003 5.7859998,5.8280003 3.786,5.8280003 z M7.677,3.7660003 L9.677,3.7660003 9.677,5.7659999 7.677,5.7659999 z M7.677,0 L9.677,0 9.677,2 7.677,2 z" Fill="{TemplateBinding Foreground}" Height="9.53" Stretch="Fill" VerticalAlignment="Top" Width="9.677" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="images/atlas.png"/>
+    </Window.Background>
+
+    <Grid x:Name="Grid0" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid x:Name="Grid1" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left" Margin="0,0,244,0" Background="#4C000000">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="350" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TreeView Grid.Column="0" x:Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged" Background="{x:Null}" Foreground="{x:Null}" BorderThickness="0" FontFamily="Verdana" FontSize="14" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderBrush="{x:Null}" VerticalAlignment="Stretch" Margin="0,12,0,0" d:IsHidden="True">
+
+                <TreeView.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                      Color="Transparent" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                      Color="Moccasin" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                      Color="Transparent" />
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                      Color="#FFDFCF99" />
+                </TreeView.Resources>
+
+                <TreeView.ContextMenu>
+                    <ContextMenu x:Name="treeViewContextMenu">
+                        <MenuItem x:Name="menuItemExport" Header="{x:Static Properties:Resources.MainWindow_Menu_Export}" Click="menuItemExport_Click" IsEnabled="False" />
+                        <MenuItem x:Name="menuItemReplace" Header="{x:Static Properties:Resources.MainWindow_Menu_Replace}" Click="menuItemReplace_Click" IsEnabled="False" />
+                    </ContextMenu>
+                </TreeView.ContextMenu>
+            </TreeView>
+
+            <GridSplitter Grid.Column="0"  x:Name="gridSplitter"  Width="5" Background="Black" Margin="0" BorderThickness="1,0" d:IsHidden="True" />
+
+            <Grid Grid.Column="1" Margin="0" d:IsHidden="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBox  x:Name="textBoxOutput" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" FontSize="14" IsReadOnly="True" Background="{x:Null}" BorderThickness="0" Foreground="#FFD5D5D5" SelectionBrush="#B25378C7" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="20,31,0,0" BorderBrush="{x:Null}" />
+                <RichTextBox Grid.Row="0" x:Name="richTextOutput" VerticalScrollBarVisibility="Auto" IsReadOnly="True" BorderThickness="0" Background="{x:Null}" FontFamily="Consolas" FontSize="14" Foreground="#FFD5D5D5" ScrollViewer.VerticalScrollBarVisibility="Hidden" Visibility="Hidden" Margin="20" BorderBrush="{x:Null}" />
+                <Button x:Name="min" Grid.Row="0" Style="{StaticResource ButtonStyle}" BorderBrush="Transparent" Focusable="False" Height="30" Margin="0,17,40,0" Width="30" Click="TriggerMinimize" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="0" Foreground="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/min.png" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="exit" Grid.Row="0" Style="{StaticResource ButtonStyle}" BorderBrush="Transparent" Focusable="False" Height="30" Margin="0,17,5,0" Width="30" Click="TriggerClose" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="images/exit.png" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid x:Name="Grid2" Grid.Row="1" Width="244" Grid.RowSpan="2" HorizontalAlignment="Right" d:LayoutOverrides="LeftMargin, RightMargin" Background="#66000000">
+            <Grid.Effect>
+                <DropShadowEffect Direction="160" ShadowDepth="0" BlurRadius="15" />
+            </Grid.Effect>
+            <TabControl x:Name="tabControl" Background="{x:Null}" Foreground="{x:Null}" BorderBrush="Black" BorderThickness="2,0,0,2" FontFamily="Consolas" Margin="0,3,0,0" Height="530" Width="244" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <TabItem x:Name="Effects" Header="Effects" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFDFCF99" BorderThickness="0,0,2,0" FontFamily="Consolas" FontSize="14.667" Height="24" Width="90" Margin="0" VerticalAlignment="Bottom" d:LayoutOverrides="Height" HorizontalAlignment="Left">
+                    <StackPanel Margin="0" HorizontalAlignment="Left">
+
+                        <TextBlock x:Name="effects" Height="24" TextWrapping="Wrap" Text="- remove effects:" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Left" Width="227" Margin="8,10,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" FontStyle="Normal" />
+                        <CheckBox x:Name="breachLeague" Content="- breach league" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="BreachLeague" Unchecked="BreachLeague" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes breach monster effects and particles" Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+                        <CheckBox x:Name="particles" Content="- particles" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="Particles" Unchecked="Particles" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes rain,smoke,vaal area effects,extra gore...etc." Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+                        <CheckBox x:Name="environments" Content="- environments" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="Environments" Unchecked="Environments" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="does changes or remove enviro effects like ligths,shadows,fireplaces,waterfalls,bugs,birds,wind,...etc." Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+                        <CheckBox x:Name="micro" Content="- microtransactions" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="Micro" Unchecked="Micro" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes lots of labyrinth effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+
+                        <TextBlock x:Name="otherEffects" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="8,10,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- remove other:" FontStyle="Normal" />
+                        <CheckBox x:Name="others" Content="- effects &amp; sounds" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="OtherEffects" Unchecked="OtherEffects" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes pets and critters and other effects and sounds." Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+                        <CheckBox x:Name="deadBodies" Content="- dead bodies" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="DeadBodies" Unchecked="DeadBodies" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes dead bodies after kills, may cause crashes with some mobs!" Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+                        <CheckBox x:Name="custom" Content="- custom effects" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="Custom" Unchecked="Custom" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="folder used for any other custom effects that starts with /Metadata..." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" FontStyle="Normal" />
+
+                        <TextBlock x:Name="soundEffects" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Text="- remove sounds:" VerticalAlignment="Center" Width="227" FontSize="16" Margin="8,10,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" FontStyle="Normal" />
+                        <CheckBox x:Name="silentMobs" Content="- silent monsters" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="SilentMobs" Unchecked="SilentMobs" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes all monster sounds." Padding="3,-3,0,0" Margin="5,0,0,2" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" />
+                        <CheckBox x:Name="silentSkills" Content="- silent skills" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="SilentSkills" Unchecked="SilentSkills" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removes sound effects from golems, chars, portals, waypoints, charges, some mobs." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" />
+
+                        <TextBlock x:Name="uiSettings" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="5,10,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- ui changes:" />
+                        <CheckBox x:Name="uiChanges" Content="- reflect mods" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="UiChanges" Unchecked="UiChanges" IsChecked="False" Background="{x:Null}" FontSize="15" ToolTip="smoke effects for reflect mods." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" />
+
+                        <TextBlock x:Name="setShaders" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="5,10,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- disable shaders:" />
+                        <CheckBox x:Name="shaders" Content="- fog and shadows" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="SetShaders" Unchecked="SetShaders" IsChecked="False" FontSize="15" ToolTip="visualy disable fog, shadows...etc (dx11)." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18">
+                            <CheckBox.Background>
+                                <ImageBrush />
+                            </CheckBox.Background>
+                        </CheckBox>
+
+                        <TextBlock x:Name="privateEffects" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="5,12,0,2" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- private:" />
+                        <CheckBox x:Name="skillEffects" Content="- skills" HorizontalAlignment="Left"  VerticalAlignment="Center" Checked="PrivateEffects" Unchecked="PrivateEffects" IsChecked="False" Background="{x:Null}" FontSize="15" ToolTip="private skill effects for special users." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="16" BorderThickness="1" />
+                        <Rectangle Height="1" StrokeThickness="5" Margin="0,0,0,-40" Fill="#7FD9D2C7" />
+
+                        <CheckBox Content="- zero effects*" x:Name="zeroEffects" Checked="ZeroEffects" Unchecked="ZeroEffects" IsChecked="False" Background="{x:Null}" ToolTip="removes all effects from everything (monster-auras/glow/effects, enviro-smoke/glows/mist, skills-all effects!!!)" BorderBrush="#7FD9D2C7" Height="18" BorderThickness="1" Padding="2,-3,0,0" Foreground="#FFDFCF99" FontFamily="Consolas" FontSize="14.667" RenderTransformOrigin="0.497,0.562" FontStyle="Italic" Margin="5,30,0,0" HorizontalAlignment="Left" />
+                        <CheckBox x:Name="zeroParticles" Checked="ZeroParticles" Unchecked="ZeroParticles" IsChecked="False" Background="{x:Null}" ToolTip="remove/restore all particles from everything" BorderBrush="#7FD9D2C7" BorderThickness="1" Padding="2,-3,0,0" Foreground="#FFDFCF99" FontFamily="Consolas" FontSize="14.667" RenderTransformOrigin="0.497,0.562" FontStyle="Italic" Margin="5,5,0,0" Content="- zero particles" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem x:Name="Skills" Header="Skills" Margin="0" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FFDFCF99" BorderThickness="0" FontFamily="Consolas" FontSize="14.667" Height="24" Width="90" d:LayoutOverrides="Height" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                    <StackPanel Margin="0,5,0,0" HorizontalAlignment="Left" Width="242" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition">
+                        <TextBlock x:Name="Improved" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- improved effects" />
+                        <CheckBox x:Name="arc" Content="- arc" Checked="Arc" Unchecked="Arc" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed shock animation effect that was making lag" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="arcticBreath" Content="- arctic breath" Checked="ArcticBreath" Unchecked="ArcticBreath" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed chilled ground who make the skill laggy and some other effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="ballLightning" Content="- ball lightning" Checked="BallLightning" Unchecked="BallLightning" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed some of the effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="bladefall" Content="- bladefall" Checked="Bladefall" Unchecked="Bladefall" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="just improved" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="bladeVortex" Content="- blade vortex" Checked="BladeVortex" Unchecked="BladeVortex" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed 6 blades and the sound from them" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="discharge" Content="- discharge" Checked="Discharge" Unchecked="Discharge" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed some laggy effects and sounds" Padding="3,-3,0,0" Margin="5,0,0,0" d:LayoutOverrides="TopPosition, BottomPosition" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="heraldOfIce" Content="- herald of ice" Checked="HeraldOfIce" Unchecked="HeraldOfIce" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed explosion and other laggy effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="lightningStrike" Content="- lightning strike" Checked="LightningStrike" Unchecked="LightningStrike" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="removed many effects to make it work" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="stormCall" Content="- storm call" Checked="StormCall" Unchecked="StormCall" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="improved effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="whisperingIce" Content="- whispering ice" Checked="WhisperingIce" Unchecked="WhisperingIce" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="improved effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="otherSkills" Content="- other skills" Checked="OtherSkills" Unchecked="OtherSkills" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="improved: - frost bomb, sunder, earthquake..." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+
+                        <TextBlock x:Name="Zero" HorizontalAlignment="Left" TextWrapping="Wrap" Width="227" FontSize="16" Height="24" VerticalAlignment="Center" Margin="5,5,0,0" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" Text="- zero effects" />
+                        <CheckBox x:Name="arcZero" Content="- arc" Checked="ArcZero" Unchecked="ArcZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="arcticBreathZero" Content="- arctic breath" Checked="ArcticBreathZero" Unchecked="ArcticBreathZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="ballLightningZero" Content="- ball lightning" Checked="BallLightningZero" Unchecked="BallLightningZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="bladefallZero" Content="- bladefall" Checked="BladefallZero" Unchecked="BladefallZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="bladeVortexZero" Content="- blade vortex" Checked="BladeVortexZero" Unchecked="BladeVortexZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="dischargeZero" Content="- discharge" Checked="DischargeZero" Unchecked="DischargeZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" d:LayoutOverrides="TopPosition, BottomPosition" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="heraldOfIceZero" Content="- herald of ice" Checked="HeraldOfIceZero" Unchecked="HeraldOfIceZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="lightningStrikeZero" Content="- lightning strike" Checked="LightningStrikeZero" Unchecked="LightningStrikeZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="stormCallZero" Content="- storm call" Checked="StormCallZero" Unchecked="StormCallZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="whisperingIceZero" Content="- whispering ice" Checked="WhisperingIceZero" Unchecked="WhisperingIceZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects" Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                        <CheckBox x:Name="otherSkillsZero" Content="- other skills" Checked="OtherSkillsZero" Unchecked="OtherSkillsZero" IsChecked="False" Background="{x:Null}" FontSize="14" ToolTip="invisible effects: - frost bomb, sunder, earthquake..." Padding="3,-3,0,0" Margin="5,0,0,0" Foreground="#FFD9D2C7" BorderBrush="#7FD9D2C7" FontFamily="Consolas" Height="18" />
+                    </StackPanel>
+                </TabItem>
+                <TabItem x:Name="Info" Header="Info*" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFDFCF99" FontFamily="Consolas" FontSize="14.667" Height="24" d:LayoutOverrides="Height, TopPosition, BottomPosition" Margin="0" HorizontalAlignment="Right" Width="60">
+                    <StackPanel>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Margin="5,10,5,5" Foreground="#FFD9D2C7" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}"><Run Text="- Remember to back up your Client.ggpk before starting to change anything." /></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Margin="5" Foreground="#FFD9D2C7" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}"><Run Text="- To reset things to default, just check / uncheck the options twice." /></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Margin="5" Foreground="#FFD9D2C7" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}"><Run Text="- Skills have 3 options: improved(lagless),zero effects(invisible effects) and default values(original game effects). Check them twice if you change your mind, from zero to improved or just to leave them by default." /></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Margin="5" Foreground="#FFD9D2C7" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}"><Run Text="- Paths used by customs options:" /><LineBreak /><Run Text="&gt; particles: Metadata/..." /><LineBreak /><Run Text="&gt; sounds: Metadata/..." /><LineBreak /><Run Text="&gt; skills: Metadata/..." /><LineBreak /><Run Text="&gt; ui changes: Art/..." /></TextBlock>
+                        <TextBlock TextWrapping="Wrap" FontSize="12" Foreground="#FFDFCF99" FontFamily="Consolas" FontWeight="Normal" TextDecorations="{x:Null}" FontStyle="Italic" Margin="5.356,10,7.643,0" HorizontalAlignment="Center" VerticalAlignment="Bottom"><Run Text="*zero effects equals to: no sounds and effects for monsters/skills." /></TextBlock>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<ArrayOfResource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Resource Tag="DatViewer_Button_ExportCSV">
+    <Text>Export CSV</Text>
+  </Resource>
+  <Resource Tag="DatViewer_Button_Save">
+    <Text>Save</Text>
+  </Resource>
+  <Resource Tag="DatViewer_ExportCSV_Failed">
+    <Text>Failed to save CSV file: {0}</Text>
+  </Resource>
+  <Resource Tag="DatViewer_ExportCSV_Successful">
+    <Text>Saved CSV file to {0}</Text>
+  </Resource>
+  <Resource Tag="DatViewer_ExportCSV_Successful_Caption">
+    <Text>Successfully saved CSV</Text>
+  </Resource>
+  <Resource Tag="DatWrapper_ParseDatFile_Failed">
+    <Text>Failed to read dat: {0}</Text>
+  </Resource>
+  <Resource Tag="DatWrapper_ParseDatFile_Unsupported_File">
+    <Text>No handler for file {0}</Text>
+  </Resource>
+  <Resource Tag="DatWrapper_Save_Failed">
+    <Text>Failed to save: {0}</Text>
+  </Resource>
+  <Resource Tag="DatWrapper_Save_Successful">
+    <Text>Saved '{0}'</Text>
+  </Resource>
+  <Resource Tag="DatWrapper_Save_Successful_Caption">
+    <Text>Saved</Text>
+  </Resource>
+  <Resource Tag="Error_Caption">
+    <Text>Error</Text>
+  </Resource>
+  <Resource Tag="Error_Read_Directory_Tree">
+    <Text>Failed to read directory tree: {0}</Text>
+  </Resource>
+  <Resource Tag="ExportAllItemsInDirectory_Default_FileName">
+    <Text>selectedRecord.Name</Text>
+  </Resource>
+  <Resource Tag="ExportAllItemsInDirectory_Failed">
+    <Text>Failed to export item(s): {0}</Text>
+  </Resource>
+  <Resource Tag="ExportAllItemsInDirectory_Successful">
+    <Text>Exported {0} files</Text>
+  </Resource>
+  <Resource Tag="ExportAllItemsInDirectory_Successful_Caption">
+    <Text>Export successful</Text>
+  </Resource>
+  <Resource Tag="ExportSelectedItem_Failed">
+    <Text>Failed to export item: {0}</Text>
+  </Resource>
+  <Resource Tag="ExportSelectedItem_Successful">
+    <Text>Exported {0} bytes</Text>
+  </Resource>
+  <Resource Tag="LabelFileOFfset_Content">
+    <Text>File Offset:</Text>
+  </Resource>
+  <Resource Tag="Load_GGPK_Filter">
+    <Text>GGPK Pack File|*.ggpk</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Drop_Failed">
+    <Text>Can only drop a single file, directory, or zip file</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropArchive_Info">
+    <Text>Applying contents of {0}</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropDirectory_Count">
+    <Text>File count = {0}</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropDirectory_Failed">
+    <Text>Unable to replace file {0} -&gt; Missing</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropDirectory_Replace">
+    <Text>Replacing {0}</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropFile_Failed">
+    <Text>Must select a file to replace in the tree view</Text>
+  </Resource>
+  <Resource Tag="MainWindow_HandleDropFile_Replace">
+    <Text>Replacing {0}{1}</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Label_FileHash">
+    <Text>Hash:</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Label_FileNameHash">
+    <Text>Name Hash:</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Label_FileOffset">
+    <Text>File Offset:</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Label_FileSize">
+    <Text>File Size:</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Menu_Export">
+    <Text>Export</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Menu_Replace">
+    <Text>Replace</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Menu_View">
+    <Text>View</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Title_Readonly">
+    <Text>VisualGGPK (Read-Only)</Text>
+  </Resource>
+  <Resource Tag="MainWindow_VersionCheck_Failed">
+    <Text>Version check failed.</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Window_Drop_Confirm">
+    <Text>Replace files?</Text>
+  </Resource>
+  <Resource Tag="MainWindow_Window_Drop_Confirm_Caption">
+    <Text>Confirm replace</Text>
+  </Resource>
+  <Resource Tag="ReloadGGPK_Failed">
+    <Text>Failed to read file: {0}</Text>
+  </Resource>
+  <Resource Tag="ReloadGGPK_ReadOnly">
+    <Text>***Opening GGPK in read-only mode ***</Text>
+  </Resource>
+  <Resource Tag="ReloadGGPK_Successful">
+    <Text>All done!</Text>
+  </Resource>
+  <Resource Tag="ReloadGGPK_Traversing_Tree">
+    <Text>Traversing tree....</Text>
+  </Resource>
+  <Resource Tag="ReplaceItem_Failed">
+    <Text>Failed to replace item: {0}</Text>
+  </Resource>
+  <Resource Tag="ReplaceItem_Readonly">
+    <Text>GGPK open in read-only mode</Text>
+  </Resource>
+  <Resource Tag="ReplaceItem_Readonly_Caption">
+    <Text>Cannot write to GGPK</Text>
+  </Resource>
+  <Resource Tag="ReplaceItem_Successful">
+    <Text>Record {0} updated and relocated to offset {1}</Text>
+  </Resource>
+  <Resource Tag="ReplaceItem_Successful_Caption">
+    <Text>Replacement successful</Text>
+  </Resource>
+  <Resource Tag="UpdateDisplayPanel_Failed">
+    <Text> * Unable to view item, export it if you want to view it *__BREAK____BREAK__Details: {0}</Text>
+  </Resource>
+  <Resource Tag="ViewSelectedItem_Failed">
+    <Text>Failed to extract file for viewing: {0}</Text>
+  </Resource>
+</ArrayOfResource>
