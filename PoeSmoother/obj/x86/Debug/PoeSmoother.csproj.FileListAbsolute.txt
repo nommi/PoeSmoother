@@ -17,3 +17,22 @@ C:\Users\vmv\Documents\GitHub\PoeSmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.
 C:\Users\vmv\Documents\GitHub\PoeSmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.csproj.GenerateResource.Cache
 C:\Users\vmv\Documents\GitHub\PoeSmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.exe
 C:\Users\vmv\Documents\GitHub\PoeSmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.pdb
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\PoeSmoother.exe.config
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.exe
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.pdb
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\PoeSmoother.exe
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\PoeSmoother.pdb
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\Ionic.Zip.dll
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\LibGGPK.dll
+D:\Coding\PoESmoother\PoeSmoother\bin\Debug\LibGGPK.pdb
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.csprojResolveAssemblyReference.cache
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\Simple Styles.baml
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\App.baml
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\MainWindow.g.cs
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\App.g.cs
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother_MarkupCompile.cache
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother_MarkupCompile.lref
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\MainWindow.baml
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.g.resources
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.Properties.Resources.resources
+D:\Coding\PoESmoother\PoeSmoother\obj\x86\Debug\PoeSmoother.csproj.GenerateResource.Cache

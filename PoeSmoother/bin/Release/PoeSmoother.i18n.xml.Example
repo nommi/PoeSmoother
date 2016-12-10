@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ArrayOfResource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Resource Tag="DatViewer_Button_ExportCSV">
     <Text>Export CSV</Text>
   </Resource>
@@ -113,6 +113,9 @@
   </Resource>
   <Resource Tag="MainWindow_Window_Drop_Confirm_Caption">
     <Text>Confirm replace</Text>
+  </Resource>
+  <Resource Tag="NoSuchDirectory_Sklls">
+    <Text>No such skill directory found</Text>
   </Resource>
   <Resource Tag="ReloadGGPK_Failed">
     <Text>Failed to read file: {0}</Text>

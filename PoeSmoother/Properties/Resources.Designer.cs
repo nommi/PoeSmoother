@@ -403,6 +403,15 @@ namespace PoeSmoother.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No such skill directory found.
+        /// </summary>
+        public static string NoSuchDirectory_Sklls {
+            get {
+                return ResourceManager.GetString("NoSuchDirectory_Sklls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to read file: {0}.
         /// </summary>
         public static string ReloadGGPK_Failed {
