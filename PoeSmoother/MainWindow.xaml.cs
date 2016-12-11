@@ -517,6 +517,7 @@
         }
 
         #region PoeSmoother
+        //Skill tab
         private void Arc(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Arc/removeEffects/Metadata", "config/Skills/Arc/restoreDefault/Metadata", arc); }
         private void ArcZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Arc/zeroEffects/Metadata", "config/Skills/Arc/restoreDefault/Metadata", arcZero); }
         private void ArcticBreath(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Arctic Breath/removeEffects/Metadata", "config/Skills/Arctic Breath/restoreDefault/Metadata", arcticBreath); }
@@ -541,6 +542,9 @@
         private void WhisperingIce(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Whispering Ice/removeEffects/Metadata", "config/Skills/Whispering Ice/restoreDefault/Metadata", whisperingIce); }
         private void WhisperingIceZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Whispering Ice/zeroEffects/Metadata", "config/Skills/Whispering Ice/restoreDefault/Metadata", whisperingIce); }
 
+        // Main tab
+        private void BloodEffects(object sender, RoutedEventArgs e) { AlterByFolder("config/BloodEffects/removeEffects/Metadata", "config/BloodEffects/restoreDefault/Metadata", blood); }
+        private void CorpseExplosion(object sender, RoutedEventArgs e) { AlterByFolder("config/CorpseExplosion/removeEffects/Metadata", "config/CorpseExplosion/restoreDefault/Metadata", corpseexplosion); }
         private void Particles(object sender, RoutedEventArgs e) { AlterByFolder("config/Particles/removeEffects/Metadata", "config/Particles/restoreDefault/Metadata", particles); }
         private void Environments(object sender, RoutedEventArgs e) { AlterByFolder("config/Environment/removeEffects/Metadata", "config/Environment/restoreDefault/Metadata", environments); }
         private void SilentMobs(object sender, RoutedEventArgs e) { AlterByFolder("config/Sounds/SilentMonsters/removeEffects/Metadata", "config/Sounds/SilentMonsters/restoreDefault/Metadata", silentMobs); }
@@ -709,7 +713,5 @@
         {
             DragMove();
         }
-
-       
     }
 }
