@@ -526,6 +526,7 @@
         private void BallLightningZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Ball Lightning/zeroEffects/Metadata", "config/Skills/Ball Lightning/restoreDefault/Metadata", ballLightningZero); }          
         private void BladeVortex(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Blade Vortex/removeEffects/Metadata", "config/Skills/Blade Vortex/restoreDefault/Metadata", bladeVortex); }
         private void BladeVortexZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Blade Vortex/removeEffects/Metadata", "config/Skills/Blade Vortex/restoreDefault/Metadata", bladeVortexZero); }
+        private void BlueIncinerateMTX(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Blue Incinerate MTX/removeEffects/Metadata", "config/Skills/Blue Incinerate MTX/restoreDefault/Metadata", blueIncinerateMTX); }
         private void Discharge(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Discharge/removeEffects/Metadata", "config/Skills/Discharge/restoreDefault/Metadata", discharge); }
         private void DischargeZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Discharge/removeEffects/Metadata", "config/Skills/Discharge/restoreDefault/Metadata", dischargeZero); }
         private void Firestorm(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Firestorm/removeEffects/Metadata", "config/Skills/Firestorm/restoreDefault/Metadata", firestorm); }
