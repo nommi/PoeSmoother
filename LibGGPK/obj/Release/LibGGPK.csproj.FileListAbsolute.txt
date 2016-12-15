@@ -30,4 +30,3 @@ C:\Users\vmv\Documents\GitHub\PoeSmoother\LibGGPK\bin\Release\LibGGPK.dll
 C:\Users\vmv\Documents\GitHub\PoeSmoother\LibGGPK\bin\Release\LibGGPK.pdb
 C:\Users\vmv\Documents\GitHub\PoeSmoother\LibGGPK\obj\Release\LibGGPK.dll
 C:\Users\vmv\Documents\GitHub\PoeSmoother\LibGGPK\obj\Release\LibGGPK.pdb
-C:\Users\vmv\Documents\GitHub\PoeSmoother\LibGGPK\obj\Release\LibGGPK.csprojResolveAssemblyReference.cache

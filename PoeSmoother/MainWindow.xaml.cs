@@ -532,7 +532,7 @@
         private void DischargeZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Discharge/removeEffects/Metadata", "config/Skills/Discharge/restoreDefault/Metadata", dischargeZero); }
         private void Firestorm(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Firestorm/removeEffects/Metadata", "config/Skills/Firestorm/restoreDefault/Metadata", firestorm); }
         private void HeraldOfIce(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Herald Of Ice/removeEffects/Metadata", "config/Skills/Herald Of Ice/restoreDefault/Metadata", heraldOfIce); }
-        private void HeraldOfIceZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Herald Of Ice/zeroEffects/Metadata", "config/Skills/Herald Of Ice/restoreDefault/Metadata", heraldOfIceZero); ; }
+        private void HeraldOfIceZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Herald Of Ice/zeroEffects/Metadata", "config/Skills/Herald Of Ice/restoreDefault/Metadata", heraldOfIceZero); }
         private void LightningStrike(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Lightning Strike/removeEffects/Metadata", "config/Skills/Lightning Strike/restoreDefault/Metadata", lightningStrike); }
         private void LightningStrikeZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Lightning Strike/zeroEffects/Metadata", "config/Skills/Lightning Strike/restoreDefault/Metadata", lightningStrikeZero); }
         private void OtherSkills(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Other Skills/removeEffects/Metadata", "config/Skills/Other Skills/restoreDefault/Metadata", otherSkills); }
