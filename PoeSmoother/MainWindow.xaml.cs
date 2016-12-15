@@ -12,6 +12,7 @@
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+    using System.Diagnostics;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -541,9 +542,12 @@
         private void StormCall(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Storm Call/removeEffects/Metadata", "config/Skills/Storm Call/restoreDefault/Metadata", stormCall); }
         private void StormCallZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Storm Call/zeroEffects/Metadata", "config/Skills/Storm Call/restoreDefault/Metadata", stormCallZero); }
         private void WhisperingIce(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Whispering Ice/removeEffects/Metadata", "config/Skills/Whispering Ice/restoreDefault/Metadata", whisperingIce); }
-        private void WhisperingIceZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Whispering Ice/zeroEffects/Metadata", "config/Skills/Whispering Ice/restoreDefault/Metadata", whisperingIce); }
+        private void WhisperingIceZero(object sender, RoutedEventArgs e) { AlterByFolder("config/Skills/Whispering Ice/zeroEffects/Metadata", "config/Skills/Whispering Ice/restoreDefault/Metadata", whisperingIceZero); }
 
         // Main tab
+        // improved fx
+        private void GroundFx(object sender, RoutedEventArgs e) { AlterByFolder("config/GroundFx/improvedEffects/Metadata", "config/GroundFx/restoreDefault/Metadata", groundFx); }
+        // removed fx
         private void BloodEffects(object sender, RoutedEventArgs e) { AlterByFolder("config/BloodEffects/removeEffects/Metadata", "config/BloodEffects/restoreDefault/Metadata", blood); }
         private void CorpseExplosion(object sender, RoutedEventArgs e) { AlterByFolder("config/CorpseExplosion/removeEffects/Metadata", "config/CorpseExplosion/restoreDefault/Metadata", corpseexplosion); }
         private void Particles(object sender, RoutedEventArgs e) { AlterByFolder("config/Particles/removeEffects/Metadata", "config/Particles/restoreDefault/Metadata", particles); }
@@ -557,6 +561,7 @@
         private void Custom(object sender, RoutedEventArgs e) { AlterByFolder("config/Custom/removeEffects/Metadata", "config/Custom/restoreDefault/Metadata", custom); }
         private void SetShaders(object sender, RoutedEventArgs e) { AlterByFolder("config/Shaders/removeEffects/Shaders", "config/Shaders/restoreDefault/Shaders", shaders); }
         private void PrivateEffects(object sender, RoutedEventArgs e) { AlterByFolder("config/PrivateEffects/removeEffects/Metadata", "config/PrivateEffects/restoreDefault/Metadata", skillEffects); }
+        private void ZeroGroundFX(object sender, RoutedEventArgs e) { AlterByFolder("config/GroundFx/zeroEffects/Metadata", "config/GroundFx/restoreDefault/Metadata", zeroGroundEffects); }
         private void ZeroEffects(object sender, RoutedEventArgs e) { AlterByFolder("config/ZeroEffects/removeAllEffects/Metadata", "config/ZeroEffects/restoreDefault/Metadata", zeroEffects); }
         private void ZeroParticles(object sender, RoutedEventArgs e) { AlterByFolder("config/ZeroParticles/removeEffects/Shaders", "config/ZeroParticles/restoreDefault/Shaders", zeroParticles); }
         private void BreachLeague(object sender, RoutedEventArgs e) { AlterByFolder("config/BreachLeague/removeEffects/Metadata", "config/BreachLeague/restoreDefault/Metadata", breachLeague); }
@@ -608,6 +613,7 @@
                             foreach (var item in restore_Default)
                             {
                                 string fileNames = item.Remove(0, RestoreDefault.Length - restore_Default_dir);
+                                Debug.WriteLine(item.ToString());
                                 RecordsByPath[fileNames].ReplaceContents(ggpkPath, item, content.FreeRoot);
                             }
                             UpdateDisplayPanel();
