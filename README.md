@@ -3,7 +3,7 @@
 ***GGG didn't banned anyone yet for using this tool, but let's not abuse it too much by modifying mtx effects in public. It is already breaking the rules as it is...Be careful!***
 --
 
-### Donations can be made [here](https://www.paypal.me/vmvPaLPaY)
+### If you liked the tool and if you want to support my partial work ...donations can be made [here](https://www.paypal.me/vmvPaLPaY)
 ----
 
 
